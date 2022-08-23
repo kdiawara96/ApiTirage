@@ -38,7 +38,9 @@ public class Postulants {
         this.email = email;
     }
 
+
     @ManyToOne
+    @JoinColumn(name = "liste_id")
     private Liste liste;
 
     //@ManyToMany

@@ -23,7 +23,8 @@ import java.util.List;
 @Service
 @AllArgsConstructor
 public class PostulantsImple implements ServicePostulants {
-private final Postulants_repo post_repo;
+
+    private final Postulants_repo post_repo;
 
     @Override
     public List<Postulants> insererPostulant(List<Postulants> listInser) {
@@ -32,8 +33,7 @@ private final Postulants_repo post_repo;
 
 
     @Override
-    public List<Postulants> read(MultipartFile file) {
-
-        return null;
+    public List<Object> listId() {
+       return post_repo.listId();
     }
 }

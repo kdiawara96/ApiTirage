@@ -1,21 +1,21 @@
 package com.apitirage.FreeTirage.ServiceImplements;
 
+import com.apitirage.FreeTirage.Models.Tirages;
+import com.apitirage.FreeTirage.Repository.Tirages_repo;
 import com.apitirage.FreeTirage.Services.ServiceTirage;
+import lombok.AllArgsConstructor;
+import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import java.util.Date;
 
+@Service
+@AllArgsConstructor
 public class TirageImpl implements ServiceTirage {
-    @Override
-    public Random trie(Random ro) {
-        return null;
-    }
+  private final Tirages_repo repo;
 
     @Override
-    public List<Integer> idPostulant() {
-        List<Integer> list =new ArrayList<>();
-
-        return list;
+    public Tirages addTirage(Tirages tirage) {
+        tirage.setDatetirage(new Date());
+        return  repo.save(tirage);
     }
 }

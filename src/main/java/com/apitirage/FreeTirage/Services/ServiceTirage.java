@@ -1,9 +1,11 @@
 package com.apitirage.FreeTirage.Services;
 
+import com.apitirage.FreeTirage.Models.Tirages;
+import org.springframework.stereotype.Repository;
+
 import java.util.List;
 import java.util.Random;
 
 public interface ServiceTirage {
-  Random trie(Random ro);
-  List<Integer> idPostulant();
+Tirages addTirage(Tirages tirage);
 }

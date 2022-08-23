@@ -8,5 +8,6 @@ import java.util.List;
 
 public interface ServicePostulants {
     List<Postulants> insererPostulant(List<Postulants> listInser);
-    List<Postulants> read(MultipartFile file);
+
+   public List<Object> listId();
 }

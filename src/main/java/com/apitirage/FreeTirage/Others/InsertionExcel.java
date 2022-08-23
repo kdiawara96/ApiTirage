@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -36,8 +37,9 @@ public class InsertionExcel {
         long debut = System.currentTimeMillis();//l'heure de fin
 
         try {
-            //FileInputStream inputStrean = new FileInputStream(file.getInputStream());
+           // FileInputStream inputStrean = new FileInputStream("classeur1.xlsx");
             XSSFWorkbook workbook = new XSSFWorkbook(file.getInputStream());
+            //XSSFWorkbook workbook = new XSSFWorkbook(inputStrean);
 
             Sheet firstSheet=workbook.getSheetAt(0);
             Iterator<Row> rowIterator=firstSheet.iterator();

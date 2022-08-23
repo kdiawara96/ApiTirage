@@ -5,7 +5,6 @@ import com.apitirage.FreeTirage.Others.InsertionExcel;
 import com.apitirage.FreeTirage.Services.ServiceListe;
 import com.apitirage.FreeTirage.Services.ServicePostulants;
 import lombok.AllArgsConstructor;
-import org.apache.catalina.connector.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 
@@ -25,12 +24,8 @@ public class PostulantsController {
     final private ServicePostulants service;
     final private ServiceListe listPostulants;
 
-   /* @PostMapping("/add")
-    public void add(){
 
-        service.read();
 
-    }*/
 
         @PostMapping("/add/{libelle}")
     public String add(@Param("file") MultipartFile file, Liste listp, @PathVariable("libelle") String libelle){
@@ -39,7 +34,8 @@ public class PostulantsController {
             InsertionExcel inser =  new InsertionExcel();
 
             List<Postulants> postList = inser.insert(file);
-            listp.setDatet_liste_postulant(new Date());
+            
+            listp.setDatetlist(new Date());
 
             Liste el = listPostulants.creer(listp);
 
@@ -47,11 +43,12 @@ public class PostulantsController {
                 lili.setListe(el);
             }
             service.insererPostulant(postList);
-           // service.read(file);
 
+           // service.read(file);
           //  list.add((List_Postulants) service.read(file));
 
 
         return "Success!";
         }
+
 }

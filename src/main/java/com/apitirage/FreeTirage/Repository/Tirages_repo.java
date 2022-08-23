@@ -9,7 +9,4 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 public interface Tirages_repo extends JpaRepository<Tirages, Long> {
 
-    @Query(value = "SELECT id FROM `postulants`;", nativeQuery = true)
-
-    List<Object[]> idPostulant();
 }
