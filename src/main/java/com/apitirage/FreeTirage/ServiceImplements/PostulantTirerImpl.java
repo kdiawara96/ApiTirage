@@ -14,8 +14,8 @@ public class PostulantTirerImpl implements ServicePostulantTirer {
     private final Postulants_tirer_repo ptr;
 
     @Override
-    public int insertion_tirage(Long tirage, int indexT) {
-        return ptr.insertion_tirage(tirage,indexT);
+    public int insertion_tirage(  Long tirage ,int indexT) {
+        return ptr.insertion_tirage(tirage, indexT);
     }
 
 }

@@ -18,5 +18,5 @@ public interface Postulants_tirer_repo extends JpaRepository<Postulants_Tirer, L
     @Modifying
     @Transactional
     @Query(value ="INSERT INTO postulants_tirer (tirage_id,index_tirage) VALUES (?,?)" ,nativeQuery = true)
-    public int insertion_tirage(Long tirage, int indexT);
+    public int insertion_tirage( Long tirage, int indexT);
 }

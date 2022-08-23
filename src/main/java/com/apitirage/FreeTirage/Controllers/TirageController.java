@@ -1,6 +1,7 @@
 package com.apitirage.FreeTirage.Controllers;
 
 import com.apitirage.FreeTirage.Models.Postulants;
+import com.apitirage.FreeTirage.Models.Postulants_Tirer;
 import com.apitirage.FreeTirage.Models.Tirages;
 import com.apitirage.FreeTirage.Services.ServicePostulantTirer;
 import com.apitirage.FreeTirage.Services.ServicePostulants;
@@ -27,8 +28,10 @@ public class TirageController {
     @ResponseBody
     public List<Integer> tirage(@RequestBody Tirages tirages){
 
+
+
         int nbr = tirages.getNbr() -1;
-        Long id = tirages.getId();
+
 
         int value =1;
     List<Object> idl= servicePostulants.listId();
@@ -50,13 +53,14 @@ public class TirageController {
                  --nbr;
              }
          }while (nbr > 0);
+        Tirages tt = service.addTirage(tirages);
 
+        Long id = tt.getId();
+        for (int  po : valeurRandom)
+        {
 
-        for (int  po : valeurRandom){
             servicePos.insertion_tirage(id, po);
         }
-
-        service.addTirage(tirages);
 
        return  valeurRandom;
     }
