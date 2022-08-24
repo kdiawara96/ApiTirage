@@ -21,4 +21,14 @@ public class NatifImpl implements ServiceNative {
     public List<Object> list_postulant_avec_libele(String libelle) {
         return repoPo.list_postulant_avec_libele(libelle);
     }
+
+    @Override
+    public List<Object> list_postulant_tirer_avec_libele_de_la_liste(String libelle_liste) {
+        return repoPo.list_postulant_tirer_avec_libele_de_la_liste(libelle_liste);
+    }
+
+    @Override
+    public List<Object> list_postulant_tirer_avec_libele_de_la_liste_et_du_tirage(String libelle_liste, String libelle_tirage) {
+        return repoPo.list_postulant_tirer_avec_libele_de_la_liste_et_du_tirage(libelle_liste, libelle_tirage);
+    }
 }

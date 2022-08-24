@@ -8,6 +8,8 @@ import com.apitirage.FreeTirage.Others.Message;
 import com.apitirage.FreeTirage.Services.ServicePostulantTirer;
 import com.apitirage.FreeTirage.Services.ServicePostulants;
 import com.apitirage.FreeTirage.Services.ServiceTirage;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.springframework.data.repository.query.Param;
@@ -21,6 +23,7 @@ import java.util.Random;
 @RestController
 @RequestMapping("/tirages")
 @AllArgsConstructor
+@Api(value = "API_TIRAGE", description = "Ce controlleur regorge les requêtes sur le tirage!")
 public class TirageController {
 
     private final ServiceTirage service;
@@ -30,6 +33,7 @@ public class TirageController {
 
     @PostMapping("/inserTirage")
     @ResponseBody
+    @ApiOperation(value = "Cette methode va vous permettre de faire le TIRAGE!")
     public  List<Integer> tirage(@RequestBody Tirages tirages) {
         try {
             //ous avons instancier la classe Aleatoire pour faire le trie avec sa methode tirage

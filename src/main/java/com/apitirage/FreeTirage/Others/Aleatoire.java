@@ -7,8 +7,7 @@ import com.apitirage.FreeTirage.Services.ServicePostulants;
 import com.apitirage.FreeTirage.Services.ServiceTirage;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
-import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import java.util.ArrayList;
 import java.util.List;
@@ -111,7 +110,7 @@ public class Aleatoire{
             /*
                Insertion dans la table postulant tiré
              */
-
+           // Long id = tt.getId();
             servicePos.insertion_tirage(id, po);
         }
         /*
