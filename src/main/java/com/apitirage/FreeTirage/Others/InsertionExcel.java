@@ -42,7 +42,7 @@ public class InsertionExcel {
             //XSSFWorkbook workbook = new XSSFWorkbook(inputStrean);
 
             Sheet firstSheet=workbook.getSheetAt(0);
-            Iterator<Row> rowIterator=firstSheet.iterator();
+            Iterator<Row> rowIterator= firstSheet.iterator();
 
             rowIterator.next();
 
@@ -109,6 +109,7 @@ public class InsertionExcel {
             Message.Response("Import donne "+(fin - debut)+"Secondes", HttpStatus.OK,null);
             //System.out.printf("Import done in %d ms\n", (fin - debut));
         } catch (Exception e) {
+
             Message.Response(e.getMessage(),HttpStatus.OK,null);
         }
         return postulants;
