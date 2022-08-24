@@ -110,7 +110,6 @@ public class TirageController {
 
             /*
                Insertion dans la table postulant tiré
-
              */
 
             servicePos.insertion_tirage(id, po);
@@ -123,16 +122,5 @@ public class TirageController {
     }
 
 
-
-   /* @GetMapping("/idlist")
-    @ResponseBody
-    public List<Object> idliste(){
-        if (servicePostulants.listId() == null){
-            return null;
-        }else {
-            return servicePostulants.listId();
-        }
-    }
-    */
 
 }
