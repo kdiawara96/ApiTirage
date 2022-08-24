@@ -1,5 +1,6 @@
 package com.apitirage.FreeTirage.Others;
 
+import com.apitirage.FreeTirage.Models.Postulants;
 import com.apitirage.FreeTirage.Models.Tirages;
 import com.apitirage.FreeTirage.Services.ServicePostulantTirer;
 import com.apitirage.FreeTirage.Services.ServicePostulants;
