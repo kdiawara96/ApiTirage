@@ -18,9 +18,18 @@ public class PostulantsImple implements ServicePostulants {
         return post_repo.saveAll(listInser);
     }
 
+    @Override
+    public Postulants insererUnPostulant(Postulants postulant) {
+        return post_repo.save(postulant);
+    }
+
 
     @Override
     public List<Object> listId() {
        return post_repo.listId();
+    }
+
+    public Postulants findByEmail(String email){
+        return post_repo.findByEmail(email);
     }
 }

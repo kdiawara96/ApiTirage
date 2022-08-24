@@ -9,6 +9,8 @@ import java.util.List;
 @Repository
 public interface Postulants_repo extends JpaRepository<Postulants, Long> {
 
+    public Postulants findByEmail(String email);
+
     @Query(value = "SELECT postulants.id FROM postulants", nativeQuery = true)
     public List<Object> listId();
 

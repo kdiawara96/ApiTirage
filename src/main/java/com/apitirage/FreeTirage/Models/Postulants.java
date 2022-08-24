@@ -3,7 +3,9 @@ package com.apitirage.FreeTirage.Models;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 @Entity
 @Table(name = "postulants")
@@ -39,9 +41,8 @@ public class Postulants {
     }
 
 
-    @ManyToOne
-    @JoinColumn(name = "liste_id")
-    private Liste liste;
+    @ManyToMany
+    private List<Liste> liste = new ArrayList<Liste>();
 
     //@ManyToMany
    // private Collection<List_Postulants> listpostulants;

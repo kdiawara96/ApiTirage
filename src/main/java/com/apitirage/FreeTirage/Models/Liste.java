@@ -4,6 +4,7 @@ import lombok.Data;
 
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
@@ -22,10 +23,10 @@ public class Liste {
     @Column(name = "datelist",nullable = false)
     private Date datetlist;
 
-/*
-          @OneToMany(mappedBy = "liste")
-          private Postulants postulants;
 
+          @ManyToMany(mappedBy = "liste")
+          private List<Postulants> postulant = new ArrayList<Postulants>();
+/*
         @OneToMany(mappedBy = "liste")
         private Tirages tirages;
 */

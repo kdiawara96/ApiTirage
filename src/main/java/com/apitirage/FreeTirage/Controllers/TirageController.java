@@ -14,6 +14,7 @@ import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -34,18 +35,19 @@ public class TirageController {
     @PostMapping("/inserTirage")
     @ResponseBody
     @ApiOperation(value = "Cette methode va vous permettre de faire le TIRAGE!")
-    public  List<Integer> tirage(@RequestBody Tirages tirages) {
+    public ResponseEntity<Object> tirage(@RequestBody Tirages tirages) {
         try {
             //ous avons instancier la classe Aleatoire pour faire le trie avec sa methode tirage
             //voir la classe Others/Aleatoire.tirage
 
             Aleatoire tri = new Aleatoire(service, servicePostulants, servicePos);
-            return tri.tirage(tirages);
+
+            return Message.Response("", HttpStatus.OK,tri.tirage(tirages));
         }catch (Exception e){
-            Message.Response(e.getMessage() +"Une erreur c'est produit lors du tirage, " +
+          return Message.Response(e.getMessage() +"Une erreur c'est produit lors du tirage, " +
                     "MERCI DE BIEN VOULOIR VERIFIER L4EXISTANCE DE VOTRE LISTE!", HttpStatus.OK,null);
         }
 
-       return null;
+
     }
 }
