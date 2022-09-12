@@ -8,4 +8,6 @@ import java.util.Random;
 
 public interface ServiceTirage {
 Tirages addTirage(Tirages tirage);
+
+List<Tirages> afficherTirage();
 }

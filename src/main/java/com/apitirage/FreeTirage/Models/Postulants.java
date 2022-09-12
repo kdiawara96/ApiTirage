@@ -1,5 +1,6 @@
 package com.apitirage.FreeTirage.Models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -40,6 +41,9 @@ public class Postulants {
         this.email = email;
     }
 
+    @JoinTable( name = "postulants_liste",
+            joinColumns = @JoinColumn( name = "idpostulants" ),
+            inverseJoinColumns = @JoinColumn( name = "idliste" ) )
 
     @ManyToMany
     private List<Liste> liste = new ArrayList<Liste>();

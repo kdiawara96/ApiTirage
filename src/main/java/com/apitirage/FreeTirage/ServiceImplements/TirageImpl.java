@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.List;
 
 @Service
 @AllArgsConstructor
@@ -17,5 +18,10 @@ public class TirageImpl implements ServiceTirage {
     public Tirages addTirage(Tirages tirage) {
         tirage.setDatetirage(new Date());
         return  repo.save(tirage);
+    }
+
+    @Override
+    public List<Tirages> afficherTirage() {
+        return repo.findAll();
     }
 }

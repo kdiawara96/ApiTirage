@@ -1,5 +1,6 @@
 package com.apitirage.FreeTirage.Models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -30,7 +31,7 @@ public class Tirages {
     @Column(name = "nbr")
     private int nbr;
 
-
+         @JsonIgnore
          @ManyToOne
          @JoinColumn(name = "liste_id")
          private Liste liste;

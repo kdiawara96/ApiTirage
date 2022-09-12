@@ -22,6 +22,7 @@ import java.util.List;
 import java.util.Random;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200/")
 @RequestMapping("/tirages")
 @AllArgsConstructor
 @Api(value = "API_TIRAGE", description = "Ce controlleur regorge les requêtes sur le tirage!")
@@ -42,12 +43,19 @@ public class TirageController {
 
             Aleatoire tri = new Aleatoire(service, servicePostulants, servicePos);
 
-            return Message.Response("", HttpStatus.OK,tri.tirage(tirages));
+            return Message.Response("", HttpStatus.OK, tri.tirage(tirages));
         }catch (Exception e){
           return Message.Response(e.getMessage() +"Une erreur c'est produit lors du tirage, " +
                     "MERCI DE BIEN VOULOIR VERIFIER L4EXISTANCE DE VOTRE LISTE!", HttpStatus.OK,null);
         }
 
 
+    }
+
+
+    @GetMapping("/AfficherTirage")
+    @ApiOperation(value = "Cette methode va vous permettre d'afficher les TIRAGES!")
+    public ResponseEntity<Object> listerTirages(){
+        return Message.Response("", HttpStatus.OK, service.afficherTirage());
     }
 }

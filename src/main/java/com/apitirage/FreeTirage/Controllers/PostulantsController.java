@@ -42,19 +42,20 @@ public class PostulantsController {
       List<Postulants> postList = inser.insert(file);
 
       listp.setDatetlist(new Date());
+      Liste el = listPostulants.creer(listp);
 
 
 
       for(Postulants lili : postList){
 
           if (service.findByEmail(lili.getEmail()) == null ){
-              listp.getPostulant().add(service.insererUnPostulant(lili));
+              el.getPostulant().add(service.insererUnPostulant(lili));
           }else {
-              listp.getPostulant().add(service.findByEmail(lili.getEmail()));
+              el.getPostulant().add(service.findByEmail(lili.getEmail()));
           }
       }
       // service.insererPostulant(postList);
-      Liste el = listPostulants.creer(listp);
+     listPostulants.creer(el);
 
 
       // service.read(file);

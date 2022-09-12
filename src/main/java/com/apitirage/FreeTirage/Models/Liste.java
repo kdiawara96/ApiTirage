@@ -1,5 +1,6 @@
 package com.apitirage.FreeTirage.Models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 
@@ -23,9 +24,16 @@ public class Liste {
     @Column(name = "datelist",nullable = false)
     private Date datetlist;
 
+    @JoinTable( name = "postulants_liste",
+            joinColumns = @JoinColumn( name = "idliste" ),
+            inverseJoinColumns = @JoinColumn( name = "idpostulants" ) )
+    @ManyToMany
+    private List<Postulants> postulant = new ArrayList<Postulants>();
 
-          @ManyToMany(mappedBy = "liste")
-          private List<Postulants> postulant = new ArrayList<Postulants>();
+    @JsonIgnore
+    //cascade = CascadeType.REMOVE
+    @OneToMany(mappedBy = "liste",cascade = CascadeType.REMOVE )
+    private List<Tirages> tirages;
 /*
         @OneToMany(mappedBy = "liste")
         private Tirages tirages;
