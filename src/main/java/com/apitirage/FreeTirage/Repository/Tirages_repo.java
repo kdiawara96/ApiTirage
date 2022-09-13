@@ -10,6 +10,7 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 public interface Tirages_repo extends JpaRepository<Tirages, Long> {
 
-
+    @Query(value = "SELECT COUNT(*) FROM `tirages`;", nativeQuery = true)
+    public Integer countListe();
 
 }

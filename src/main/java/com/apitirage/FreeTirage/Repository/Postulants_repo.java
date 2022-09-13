@@ -26,4 +26,6 @@ public interface Postulants_repo extends JpaRepository<Postulants, Long> {
     @Query(value = "SELECT postulants.nom, postulants.prenom, postulants.numero, postulants.email FROM `postulants`,`liste`,`tirages`,`postulants_tirer` WHERE postulants.liste_id = liste.id AND liste.libelle =? AND tirages.liste_id = liste.id AND tirages.id = postulants_tirer.tirage_id AND postulants.id = postulants_tirer.index_tirage AND tirages.libelletirage =?", nativeQuery = true)
     List<Object> list_postulant_tirer_avec_libele_de_la_liste_et_du_tirage(@Param("libelle_liste") String libelle_liste, @Param("libelle_tirage") String libelle_tirage);
 
+    @Query(value = "SELECT COUNT(*) FROM `postulants`;", nativeQuery = true)
+    Integer countPostulants();
 }

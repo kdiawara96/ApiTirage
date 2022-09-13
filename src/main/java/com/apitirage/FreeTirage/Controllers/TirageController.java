@@ -1,10 +1,12 @@
 package com.apitirage.FreeTirage.Controllers;
 
+import com.apitirage.FreeTirage.Models.Liste;
 import com.apitirage.FreeTirage.Models.Postulants;
 import com.apitirage.FreeTirage.Models.Postulants_Tirer;
 import com.apitirage.FreeTirage.Models.Tirages;
 import com.apitirage.FreeTirage.Others.Aleatoire;
 import com.apitirage.FreeTirage.Others.Message;
+import com.apitirage.FreeTirage.Services.ServiceListe;
 import com.apitirage.FreeTirage.Services.ServicePostulantTirer;
 import com.apitirage.FreeTirage.Services.ServicePostulants;
 import com.apitirage.FreeTirage.Services.ServiceTirage;
@@ -18,6 +20,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Random;
 
@@ -31,6 +34,7 @@ public class TirageController {
     private final ServiceTirage service;
     private final ServicePostulants servicePostulants;
     private final ServicePostulantTirer servicePos;
+    private final ServiceListe serviceListe;
 
 
     @PostMapping("/inserTirage")
@@ -38,6 +42,7 @@ public class TirageController {
     @ApiOperation(value = "Cette methode va vous permettre de faire le TIRAGE!")
     public ResponseEntity<Object> tirage(@RequestBody Tirages tirages) {
         try {
+
             //ous avons instancier la classe Aleatoire pour faire le trie avec sa methode tirage
             //voir la classe Others/Aleatoire.tirage
 
@@ -52,10 +57,30 @@ public class TirageController {
 
     }
 
+    @PostMapping("/ajouter/{libelle}")
+    public Tirages ajouterTirage(@PathVariable("libelle") String libelle, @RequestBody Tirages tirages){
+        Liste liste1 = this.serviceListe.trouverListeParLibelle(libelle);
+        tirages.setListe(liste1);
+        tirages.setDatetirage(new Date());
+        System.out.println("bien passer");
+        return this.service.addTirage1(tirages);
+    }
 
     @GetMapping("/AfficherTirage")
     @ApiOperation(value = "Cette methode va vous permettre d'afficher les TIRAGES!")
-    public ResponseEntity<Object> listerTirages(){
-        return Message.Response("", HttpStatus.OK, service.afficherTirage());
+    public List<Tirages> listerTirages(){
+      return service.afficherTirage();
+    }
+
+
+
+    @GetMapping("/totaleTirage")
+    public ResponseEntity<Object> compteTirage(){
+        try {
+            return Message.Response("", HttpStatus.OK, service.compteTirage());
+
+        }catch (Exception e){
+            return Message.Response("Error ou liste vide! (°_~)", HttpStatus.OK, null);
+        }
     }
 }

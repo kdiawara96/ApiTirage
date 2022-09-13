@@ -32,4 +32,10 @@ public class PostulantsImple implements ServicePostulants {
     public Postulants findByEmail(String email){
         return post_repo.findByEmail(email);
     }
+
+    @Override
+    public Integer ComptePostulants() {
+        return post_repo.countPostulants();
+    }
+
 }

@@ -21,7 +21,17 @@ public class TirageImpl implements ServiceTirage {
     }
 
     @Override
+    public Tirages addTirage1(Tirages tirage) {
+        return this.repo.save(tirage);
+    }
+
+    @Override
     public List<Tirages> afficherTirage() {
         return repo.findAll();
+    }
+
+    @Override
+    public Integer compteTirage() {
+        return repo.countListe();
     }
 }

@@ -10,4 +10,5 @@ public interface ServicePostulants {
     Postulants insererUnPostulant(Postulants postulant);
    public List<Object> listId();
     public Postulants findByEmail(String email);
+    public Integer ComptePostulants();
 }

@@ -44,7 +44,7 @@ public class Aleatoire{
          */
 
         List<Object> idl= servicePostulants.listId();
-          System.out.println(idl);
+
         /*
           Nous créons encore un tableau dynamique pour recevoir les valeurs randoms qui va être generer
          */

@@ -22,12 +22,14 @@ import java.util.List;
 
 @Api(value = "Vous allez retrouver tous les requêtes qui concerne le postulants!")
 @RestController
+@CrossOrigin(origins = "http://localhost:4200/")
 @RequestMapping("/postulants")
 @AllArgsConstructor
 public class PostulantsController {
 
     @Autowired
     final private ServicePostulants service;
+    @Autowired
     final private ServiceListe listPostulants;
 
 
@@ -67,5 +69,17 @@ public class PostulantsController {
   }
 
         }
+
+
+
+    @GetMapping("/totaPostulants")
+    public ResponseEntity<Object> allListePostulants(){
+        try{
+            return Message.Response("", HttpStatus.OK, service.ComptePostulants());
+        }catch (Exception e){
+            return Message.Response("Error ou liste vide! (°_~)", HttpStatus.OK, null);
+        }
+
+    }
 
 }

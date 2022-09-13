@@ -30,7 +30,7 @@ public class Liste {
     @ManyToMany
     private List<Postulants> postulant = new ArrayList<Postulants>();
 
-    @JsonIgnore
+    //@JsonIgnore
     //cascade = CascadeType.REMOVE
     @OneToMany(mappedBy = "liste",cascade = CascadeType.REMOVE )
     private List<Tirages> tirages;
