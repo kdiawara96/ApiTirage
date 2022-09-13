@@ -7,10 +7,11 @@ import java.util.List;
 import java.util.Random;
 
 public interface ServiceTirage {
-Tirages addTirage(Tirages tirage);
+     Tirages addTirage(Tirages tirage);
 
     Tirages addTirage1(Tirages tirage);
-List<Tirages> afficherTirage();
 
-Integer compteTirage();
+    List<Tirages> afficherTirage();
+
+    Integer compteTirage();
 }

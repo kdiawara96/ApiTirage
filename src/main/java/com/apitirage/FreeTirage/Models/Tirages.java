@@ -20,7 +20,7 @@ public class Tirages {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name = "libelletirage",nullable = false,length = 100)
+    @Column(name = "libelletirage",nullable = false,length = 100, unique = true)
     private String libelletirage;
 
     @Column(name = "datetirage",nullable = false)
