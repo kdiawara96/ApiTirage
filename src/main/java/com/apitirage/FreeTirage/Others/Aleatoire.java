@@ -25,7 +25,9 @@ public class Aleatoire{
 
 
 
-    public  List<Integer> tirage(@RequestBody Tirages tirages){
+    public  List<Integer> tirage(Tirages tirages){
+        System.out.println("helooooooo11111111");
+
 
 
 /*
@@ -74,10 +76,12 @@ public class Aleatoire{
                  nous mettons des conditions pour eviter des redondance de valeur et de consideration de l'index
                  zero
               */
-            if (value != 0 && valeurRandom.contains(value) == false ){
+            if (value != 0 && !valeurRandom.contains(value)){
                  /*
                  Après nous ajoutons la value dans le tableau dynamique valeurRandom
                   */
+                System.err.println("6666666666666666666666"+value);
+
                 valeurRandom.add(value);
                  /*
                     et nous supprimons la valeur prise déjà par le random dans le tableau idl
@@ -95,6 +99,7 @@ public class Aleatoire{
            Nous ajouter les valeurs de Tirage en recuperant son id encours pour donner au Postulant tiré
          */
 
+
         Tirages tt = service.addTirage(tirages);
 
         Long id = tt.getId();
@@ -111,6 +116,9 @@ public class Aleatoire{
                Insertion dans la table postulant tiré
              */
            // Long id = tt.getId();
+            System.err.println(po);
+            System.err.println("|||||||||||||||||||||||||||||||");
+            System.err.println(id);
             servicePos.insertion_tirage(id, po);
         }
         /*

@@ -6,6 +6,8 @@ import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @AllArgsConstructor
 public class PostulantTirerImpl implements ServicePostulantTirer {
@@ -16,6 +18,11 @@ public class PostulantTirerImpl implements ServicePostulantTirer {
     @Override
     public int insertion_tirage(  Long tirage ,int indexT) {
         return ptr.insertion_tirage(tirage, indexT);
+    }
+
+    @Override
+    public List<Object> afficherPostulantsParTirge(Long id) {
+        return ptr.afficherPostulantsParTirge(id);
     }
 
 }

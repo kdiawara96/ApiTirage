@@ -1,16 +1,15 @@
 package com.apitirage.FreeTirage.Models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
 import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Data
+@Getter
+@Setter
 @CrossOrigin("*")
 @Table(name = "tirages")
 @AllArgsConstructor

@@ -11,7 +11,7 @@ import java.util.Random;
 public interface ServiceTirage {
      Tirages addTirage(Tirages tirage);
 
-    Tirages addTirage1(Tirages tirage);
+    //Tirages addTirage1(Tirages tirage);
 
     List<Tirages> afficherTirage();
 

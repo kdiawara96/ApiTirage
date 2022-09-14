@@ -14,7 +14,7 @@ public interface Tirages_repo extends JpaRepository<Tirages, Long> {
 
     @Query(value = "SELECT COUNT(*) FROM `tirages`;", nativeQuery = true)
     public Integer countListe();
-    @Query(value ="SELECT DISTINCT tirages.datetirage, tirages.libelletirage,tirages.nbr FROM `tirages`,liste WHERE tirages.liste_id= ?" , nativeQuery = true)
+    @Query(value ="SELECT DISTINCT tirages.datetirage, tirages.libelletirage,tirages.nbr, liste.libelle FROM `tirages`,liste WHERE tirages.liste_id=?1 AND liste.id =?1" , nativeQuery = true)
     public Page<Object> afichierTirage_en_fonction_liste(long id, Pageable pageable);
 
 /*     @Query(value = "select * from tirages where liste_id = :idliste", nativeQuery = true)

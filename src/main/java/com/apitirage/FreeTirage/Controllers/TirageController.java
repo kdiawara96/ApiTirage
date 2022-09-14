@@ -37,16 +37,19 @@ public class TirageController {
 
 
 
-    @PostMapping("/inserTirage")
+    @PostMapping("/inserTirage/{libelleL}")
     @ResponseBody
     @ApiOperation(value = "Cette methode va vous permettre de faire le TIRAGE!")
-    public ResponseEntity<Object> tirage(@RequestBody Tirages tirages) {
+    public ResponseEntity<Object> tirage(@RequestBody Tirages tirages, @PathVariable String libelleL) {
         try {
 
             //ous avons instancier la classe Aleatoire pour faire le trie avec sa methode tirage
             //voir la classe Others/Aleatoire.tirage
+            Liste liste1 = this.serviceListe.trouverListeParLibelle(libelleL);
+            tirages.setListe(liste1);
 
             Aleatoire tri = new Aleatoire(service, servicePostulants, servicePos);
+
 
             return Message.Response("", HttpStatus.OK, tri.tirage(tirages));
         }catch (Exception e){
@@ -59,7 +62,7 @@ public class TirageController {
 
 
 
-    @PostMapping("/ajouter/{libelle}")
+ /*   @PostMapping("/ajouter/{libelle}")
     public Tirages ajouterTirage(@PathVariable("libelle") String libelle, @RequestBody Tirages tirages){
         Liste liste1 = this.serviceListe.trouverListeParLibelle(libelle);
         tirages.setListe(liste1);
@@ -67,7 +70,7 @@ public class TirageController {
         System.out.println("bien passer");
         return this.service.addTirage1(tirages);
     }
-
+*/
     @GetMapping("/AfficherTirage")
     @ApiOperation(value = "Cette methode va vous permettre d'afficher les TIRAGES!")
     public List<Tirages> listerTirages(){

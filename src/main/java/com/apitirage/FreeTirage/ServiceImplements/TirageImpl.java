@@ -22,11 +22,11 @@ public class TirageImpl implements ServiceTirage {
         return  repo.save(tirage);
     }
 
-
+/*
     @Override
     public Tirages addTirage1(Tirages tirage) {
         return this.repo.save(tirage);
-    }
+    }*/
 
     @Override
     public List<Tirages> afficherTirage() {
