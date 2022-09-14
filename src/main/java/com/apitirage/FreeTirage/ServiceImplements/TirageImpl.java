@@ -4,6 +4,8 @@ import com.apitirage.FreeTirage.Models.Tirages;
 import com.apitirage.FreeTirage.Repository.Tirages_repo;
 import com.apitirage.FreeTirage.Services.ServiceTirage;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -34,5 +36,10 @@ public class TirageImpl implements ServiceTirage {
     @Override
     public Integer compteTirage() {
         return repo.countListe();
+    }
+
+    @Override
+    public Page<Object> afichierTirage_en_fonction_liste(long id, Pageable pageable) {
+        return repo.afichierTirage_en_fonction_liste(id,pageable);
     }
 }

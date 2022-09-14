@@ -1,6 +1,8 @@
 package com.apitirage.FreeTirage.Services;
 
 import com.apitirage.FreeTirage.Models.Tirages;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -14,4 +16,6 @@ public interface ServiceTirage {
     List<Tirages> afficherTirage();
 
     Integer compteTirage();
+
+    Page<Object>afichierTirage_en_fonction_liste(long id, Pageable pageable);
 }

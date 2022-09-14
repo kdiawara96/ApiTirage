@@ -1,11 +1,10 @@
 package com.apitirage.FreeTirage.Controllers;
 
 import com.apitirage.FreeTirage.Models.Liste;
-import com.apitirage.FreeTirage.Models.Postulants;
-import com.apitirage.FreeTirage.Models.Postulants_Tirer;
 import com.apitirage.FreeTirage.Models.Tirages;
 import com.apitirage.FreeTirage.Others.Aleatoire;
 import com.apitirage.FreeTirage.Others.Message;
+import com.apitirage.FreeTirage.Repository.Tirages_repo;
 import com.apitirage.FreeTirage.Services.ServiceListe;
 import com.apitirage.FreeTirage.Services.ServicePostulantTirer;
 import com.apitirage.FreeTirage.Services.ServicePostulants;
@@ -13,16 +12,15 @@ import com.apitirage.FreeTirage.Services.ServiceTirage;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-import org.springframework.data.repository.query.Param;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Random;
+
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200/")
@@ -35,6 +33,8 @@ public class TirageController {
     private final ServicePostulants servicePostulants;
     private final ServicePostulantTirer servicePos;
     private final ServiceListe serviceListe;
+
+
 
 
     @PostMapping("/inserTirage")
@@ -56,6 +56,8 @@ public class TirageController {
 
 
     }
+
+
 
     @PostMapping("/ajouter/{libelle}")
     public Tirages ajouterTirage(@PathVariable("libelle") String libelle, @RequestBody Tirages tirages){
@@ -83,4 +85,14 @@ public class TirageController {
             return Message.Response("Error ou liste vide! (°_~)", HttpStatus.OK, null);
         }
     }
+
+    @GetMapping("/detailleTirageParListe/{id}")
+    public Page<Object> detailleTirageParListe(@RequestParam(name="page", defaultValue="0") int page, @RequestParam(name ="size", defaultValue = "10") int size, @PathVariable long id, Pageable pageable){
+        return service.afichierTirage_en_fonction_liste(id,pageable);
+    }
+
+   /* @GetMapping("/tiragesParIdListe/{idliste}")
+    public List<Tirages> retournerTirageListe(@PathVariable Long idliste){
+        return tirages_repo.FIND_TIRAGE_IDLISTE(idliste);
+    }*/
 }

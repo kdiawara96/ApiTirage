@@ -7,12 +7,11 @@ import com.apitirage.FreeTirage.Services.ServiceListe;
 import io.swagger.annotations.Api;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.swing.text.html.parser.Entity;
 import java.util.List;
@@ -57,8 +56,8 @@ public ResponseEntity<Object> allListe(){
     }*/
 
     @GetMapping("/detailleListe")
-    public List<Object> detailleListe(){
-  return service.listeDetaill();
+    public Page<Object> detailleListe(@RequestParam(name="page", defaultValue="0") int page, @RequestParam(name ="size", defaultValue = "5") int size, Pageable pageable){
+  return service.listeDetaill(pageable);
     }
 
 }
