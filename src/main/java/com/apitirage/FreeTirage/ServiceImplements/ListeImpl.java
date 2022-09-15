@@ -39,4 +39,19 @@ final private Liste_repo repo;
     }
 
 
+    @Override
+    public List<Object> nbr_Tirage_sur_liste() {
+        return repo.totalTirageSurListe();
+    }
+
+    @Override
+    public Page<Object> liste_et_nombre_postulants(Pageable pageable) {
+        return repo.liste_et_nombre_postulants(pageable);
+    }
+
+    @Override
+    public List<Object> nbr_postulant_sur_list() {
+        return repo.nbr_postulant_sur_list();
+    }
+
 }

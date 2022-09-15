@@ -4,6 +4,8 @@ import com.apitirage.FreeTirage.Models.Postulants_Tirer;
 import com.apitirage.FreeTirage.Models.Tirages;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -21,6 +23,6 @@ public interface Postulants_tirer_repo extends JpaRepository<Postulants_Tirer, L
     @Query(value ="INSERT INTO postulants_tirer (tirage_id,index_tirage) VALUES (?,?)" ,nativeQuery = true)
     public int insertion_tirage( Long tirage, int indexT);
 
-    @Query(value = "SELECT postulants.nom, postulants.prenom, liste.libelle,tirages.libelletirage FROM tirages, postulants, liste, postulants_liste WHERE   tirages.liste_id = liste.id AND postulants_liste.idliste=liste.id AND postulants.id =postulants_liste.idpostulants AND tirages.id=?",nativeQuery = true)
-    public List<Object> afficherPostulantsParTirge(Long id);
+    @Query(value = "SELECT DISTINCT postulants.nom, postulants.prenom FROM postulants, postulants_tirer,tirages WHERE postulants.id = postulants_tirer.index_tirage AND postulants_tirer.tirage_id=?",nativeQuery = true)
+    public Page<Object> afficherPostulantsParTirge(Long id, Pageable pageable);
 }

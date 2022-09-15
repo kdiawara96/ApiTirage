@@ -13,5 +13,8 @@ public interface ServiceListe {
     List<Integer> countListe();
     Liste trouverListeParLibelle(String libelle);
     Page<Object> listeDetaill(Pageable pageable);
+    List<Object> nbr_Tirage_sur_liste();
+    Page<Object>liste_et_nombre_postulants(Pageable pageable);
+    List<Object>nbr_postulant_sur_list();
 
 }

@@ -1,7 +1,6 @@
 package com.apitirage.FreeTirage.Controllers;
 
 
-import com.apitirage.FreeTirage.Models.Liste;
 import com.apitirage.FreeTirage.Others.Message;
 import com.apitirage.FreeTirage.Services.ServiceListe;
 import io.swagger.annotations.Api;
@@ -13,7 +12,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.swing.text.html.parser.Entity;
 import java.util.List;
 
 @Api(value = "Vous allez retrouver tous les requêtes qui concerne le postulants!")
@@ -25,6 +23,8 @@ public class ListeController {
 
     @Autowired
     private ServiceListe service;
+    @Autowired
+    private ServiceListe listServ;
 /*
     @GetMapping("/totalListeTire")
     public ResponseEntity<Object> allListe(){
@@ -57,7 +57,24 @@ public ResponseEntity<Object> allListe(){
 
     @GetMapping("/detailleListe")
     public Page<Object> detailleListe(@RequestParam(name="page", defaultValue="0") int page, @RequestParam(name ="size", defaultValue = "5") int size, Pageable pageable){
+
+        listServ.nbr_Tirage_sur_liste();
   return service.listeDetaill(pageable);
+    }
+
+    @GetMapping("/nombreTirageuriste")
+    public List<Object> nombreTirageuriste(){
+        return listServ.nbr_Tirage_sur_liste();
+    }
+
+    @GetMapping("/liste_nbr_postulant")
+    public Page<Object> liste_et_nombre_postulants(@RequestParam(name="page", defaultValue="0") int page, @RequestParam(name ="size", defaultValue = "10") int size, Pageable pageable){
+        return listServ.liste_et_nombre_postulants(pageable);
+    }
+
+    @GetMapping("/nbr_postulant_sur_list")
+    public List<Object> nbr_postulant_sur_list(){
+        return listServ.nbr_postulant_sur_list();
     }
 
 }
