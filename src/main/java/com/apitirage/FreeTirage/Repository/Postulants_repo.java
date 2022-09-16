@@ -12,7 +12,7 @@ public interface Postulants_repo extends JpaRepository<Postulants, Long> {
     public Postulants findByEmail(String email);
 
     @Query(value = "SELECT postulants.id FROM postulants", nativeQuery = true)
-    public List<Object> listId();
+    public List<Integer> listId();
 
     @Query(value = "SELECT postulants.nom, postulants.prenom,postulants.numero, postulants.email FROM `postulants`, `liste` WHERE liste.libelle = ?", nativeQuery = true)
     List<Object> list_postulant_avec_libele(@Param("libelle") String libelle);

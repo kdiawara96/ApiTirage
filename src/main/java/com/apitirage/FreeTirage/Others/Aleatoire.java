@@ -7,6 +7,7 @@ import com.apitirage.FreeTirage.Services.ServicePostulants;
 import com.apitirage.FreeTirage.Services.ServiceTirage;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Value;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import java.util.ArrayList;
@@ -45,7 +46,8 @@ public class Aleatoire{
          Nous créons un tableau Dynamique de type Object et recevons la liste des id de la table Postulants
          */
 
-        List<Object> idl= servicePostulants.listId();
+        List<Integer> idl= servicePostulants.listId();
+
 
         /*
           Nous créons encore un tableau dynamique pour recevoir les valeurs randoms qui va être generer
@@ -69,30 +71,46 @@ public class Aleatoire{
                 tableau avec idl.size et mettre la valeur retourner dans  value declarer en haut
 
               */
-
             value = random.nextInt(idl.size());
+
+            while (valeurRandom.contains(value) || value ==0 ){
+
+                value = random.nextInt(idl.size());
+                System.err.println("Value = "+ value);
+            }
+
+
 
              /*
                  nous mettons des conditions pour eviter des redondance de valeur et de consideration de l'index
                  zero
               */
-            if (value != 0 && !valeurRandom.contains(value)){
+
+
+
                  /*
                  Après nous ajoutons la value dans le tableau dynamique valeurRandom
                   */
-                System.err.println("6666666666666666666666"+value);
+                System.err.println("value à inserer = "+value);
+
+
 
                 valeurRandom.add(value);
-                 /*
-                    et nous supprimons la valeur prise déjà par le random dans le tableau idl
-                  */
 
-                idl.remove(value);
+               // idl.remove(value);
+
                      /*
                       Nous decrementons le nbr pour que la boucle puisse s'arrêter
                       */
                 --nbr;
-            }
+
+
+             /*
+                    et nous supprimons la valeur prise déjà par le random dans le tableau idl
+                  */
+
+
+
         }while (nbr > 0);
 
         /*
@@ -116,9 +134,9 @@ public class Aleatoire{
                Insertion dans la table postulant tiré
              */
            // Long id = tt.getId();
-            System.err.println(po);
-            System.err.println("|||||||||||||||||||||||||||||||");
-            System.err.println(id);
+            System.err.println("po = "+po);
+            System.err.println("---------------------------");
+            System.err.println("id = "+id);
             servicePos.insertion_tirage(id, po);
         }
         /*

@@ -22,7 +22,7 @@ public class PostulantTirerImpl implements ServicePostulantTirer {
     private final Liste_repo repo;
 
     @Override
-    public int insertion_tirage(  Long tirage ,int indexT) {
+    public Integer insertion_tirage(  Long tirage ,int indexT) {
         return ptr.insertion_tirage(tirage, indexT);
     }
 

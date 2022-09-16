@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 import java.util.List;
 
 public interface ServicePostulantTirer{
-    int insertion_tirage(Long tirage, int indexT);
+    Integer insertion_tirage(Long tirage, int indexT);
     Page<Object> afficherPostulantsParTirge(Long id, Pageable pageable);
 
 

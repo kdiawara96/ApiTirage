@@ -8,7 +8,7 @@ import java.util.List;
 public interface ServicePostulants {
     List<Postulants> insererPostulant(List<Postulants> listInser);
     Postulants insererUnPostulant(Postulants postulant);
-   public List<Object> listId();
+   public List<Integer> listId();
     public Postulants findByEmail(String email);
     public Integer ComptePostulants();
 }

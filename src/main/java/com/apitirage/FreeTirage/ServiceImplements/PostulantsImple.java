@@ -25,7 +25,7 @@ public class PostulantsImple implements ServicePostulants {
 
 
     @Override
-    public List<Object> listId() {
+    public List<Integer> listId() {
        return post_repo.listId();
     }
 
