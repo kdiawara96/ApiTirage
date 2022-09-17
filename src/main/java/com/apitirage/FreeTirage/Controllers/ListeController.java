@@ -1,6 +1,7 @@
 package com.apitirage.FreeTirage.Controllers;
 
 
+import com.apitirage.FreeTirage.Models.Liste;
 import com.apitirage.FreeTirage.Others.Message;
 import com.apitirage.FreeTirage.Services.ServiceListe;
 import io.swagger.annotations.Api;
@@ -75,6 +76,26 @@ public ResponseEntity<Object> allListe(){
     @GetMapping("/nbr_postulant_sur_list")
     public List<Object> nbr_postulant_sur_list(){
         return listServ.nbr_postulant_sur_list();
+    }
+
+    @GetMapping("/listeComplet")
+    public List<Object> listeComplet(){
+        return listServ.listeComplet();
+    }
+
+
+
+
+
+    @GetMapping("/Afficher_detailListe_et_nombrePostulant_de_la_liste")
+    public List<Object>Afficher_detailListe_et_nombrePostulant_de_la_liste(@RequestParam(name="page", defaultValue="0") int page, @RequestParam(name ="size", defaultValue = "10") int size, Pageable pageable){
+        return listServ.Afficher_detailListe_et_nombrePostulant_de_la_liste(pageable);
+    }
+
+
+    @GetMapping("/liste_detail_et_nbr_Tirage_Fait_Sur_La_Liste")
+    public List<Object>liste_detail_et_nbr_Tirage_Fait_Sur_La_Liste(@RequestParam(name="page", defaultValue="0") int page, @RequestParam(name ="size", defaultValue = "10") int size, Pageable pageable){
+        return listServ.liste_detail_et_nbr_Tirage_Fait_Sur_La_Liste(pageable);
     }
 
 }

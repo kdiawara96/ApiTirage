@@ -28,7 +28,7 @@ public class PostulantTirerImpl implements ServicePostulantTirer {
 
     @Override
     public Page<Object> afficherPostulantsParTirge(Long id, Pageable pageable) {
-        return ptr.afficherPostulantsParTirge(id, pageable);
+        return ptr.afficherPostulantsParTirage(id, pageable);
     }
 
 

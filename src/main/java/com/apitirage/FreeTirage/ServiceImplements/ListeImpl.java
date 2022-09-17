@@ -1,6 +1,5 @@
 package com.apitirage.FreeTirage.ServiceImplements;
 import com.apitirage.FreeTirage.Models.Liste;
-import com.apitirage.FreeTirage.Models.Postulants;
 import com.apitirage.FreeTirage.Repository.Liste_repo;
 import com.apitirage.FreeTirage.Services.ServiceListe;
 import lombok.AllArgsConstructor;
@@ -52,6 +51,29 @@ final private Liste_repo repo;
     @Override
     public List<Object> nbr_postulant_sur_list() {
         return repo.nbr_postulant_sur_list();
+    }
+
+    @Override
+    public List<Object> listeComplet() {
+        return repo.listeComplet();
+    }
+
+
+
+
+
+
+
+
+    @Override
+    public List<Object> Afficher_detailListe_et_nombrePostulant_de_la_liste(Pageable pageable) {
+        return repo.Afficher_detailListe_et_nombrePostulant_de_la_liste(pageable);
+    }
+
+
+    @Override
+    public List<Object> liste_detail_et_nbr_Tirage_Fait_Sur_La_Liste(Pageable pageable) {
+        return repo.liste_detail_et_nbr_Tirage_Fait_Sur_La_Liste(pageable);
     }
 
 }

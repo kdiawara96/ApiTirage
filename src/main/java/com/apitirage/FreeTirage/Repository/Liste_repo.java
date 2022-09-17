@@ -27,12 +27,25 @@ public interface Liste_repo extends JpaRepository<Liste,Long> {
     @Query(value = "SELECT COUNT(*) FROM postulants_liste, liste,postulants WHERE liste.id=postulants_liste.idliste AND postulants_liste.idpostulants=postulants.id GROUP BY postulants_liste.idpostulants", nativeQuery = true)
     List<Object>nbr_postulant_sur_list();
 
+    @Query(value = "SELECT liste.libelle FROM liste", nativeQuery = true)
+    List<Object> listeComplet();
+
+
+
+
+
+
+
+
+
+
+    @Query(value = "SELECT  DISTINCT liste.id, liste.libelle, liste.datelist, COUNT(DISTINCT postulants.id) FROM liste, postulants,postulants_liste WHERE postulants_liste.idpostulants=postulants.id AND postulants_liste.idliste =liste.id GROUP BY liste.id", nativeQuery = true)
+    List<Object>Afficher_detailListe_et_nombrePostulant_de_la_liste(Pageable pageable);
+
+
+    @Query(value = "SELECT liste.id, liste.libelle, liste.datelist , COUNT(tirages.liste_id) FROM liste, tirages WHERE tirages.liste_id = liste.id GROUP BY tirages.liste_id", nativeQuery = true)
+    List<Object> liste_detail_et_nbr_Tirage_Fait_Sur_La_Liste(Pageable pageable);
 
     Liste findByLibelle(String libelle);
-
-//cette requet nous affiche les elements en fonction de la liste
-// SELECT liste.libelle, liste.datelist, postulants.nom FROM postulants_liste, liste,postulants WHERE liste.id=postulants_liste.idliste AND postulants_liste.idpostulants=postulants.id;
-
-
 
 }

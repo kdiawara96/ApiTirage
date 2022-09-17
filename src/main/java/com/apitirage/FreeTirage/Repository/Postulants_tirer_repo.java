@@ -24,5 +24,5 @@ public interface Postulants_tirer_repo extends JpaRepository<Postulants_Tirer, L
     public int insertion_tirage( Long tirage, int indexT);
 
     @Query(value = "SELECT DISTINCT postulants.nom, postulants.prenom FROM postulants, postulants_tirer,tirages WHERE postulants.id = postulants_tirer.index_tirage AND postulants_tirer.tirage_id=?",nativeQuery = true)
-    public Page<Object> afficherPostulantsParTirge(Long id, Pageable pageable);
+    public Page<Object> afficherPostulantsParTirage(Long id, Pageable pageable);
 }

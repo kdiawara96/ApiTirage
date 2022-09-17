@@ -16,5 +16,10 @@ public interface ServiceListe {
     List<Object> nbr_Tirage_sur_liste();
     Page<Object>liste_et_nombre_postulants(Pageable pageable);
     List<Object>nbr_postulant_sur_list();
+    List<Object> listeComplet();
+
+
+    List<Object> Afficher_detailListe_et_nombrePostulant_de_la_liste(Pageable pageable);
+    List<Object> liste_detail_et_nbr_Tirage_Fait_Sur_La_Liste(Pageable pageable);
 
 }

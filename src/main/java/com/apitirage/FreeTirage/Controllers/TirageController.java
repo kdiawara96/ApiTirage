@@ -71,11 +71,36 @@ public class TirageController {
         return this.service.addTirage1(tirages);
     }
 */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     @GetMapping("/AfficherTirage")
     @ApiOperation(value = "Cette methode va vous permettre d'afficher les TIRAGES!")
     public List<Tirages> listerTirages(){
       return service.afficherTirage();
     }
+
+
+
+
+
+
+
+
+
+
 
 
 
