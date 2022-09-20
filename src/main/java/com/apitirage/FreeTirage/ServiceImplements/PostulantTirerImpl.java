@@ -31,6 +31,10 @@ public class PostulantTirerImpl implements ServicePostulantTirer {
         return ptr.afficherPostulantsParTirage(id, pageable);
     }
 
+    @Override
+    public Page<Object> afficherPostulantsPar_Libelle_Tirage(String libelle, Pageable pageable) {
+        return ptr.afficherPostulantsPar_Libelle_Tirage(libelle, pageable);
+    }
 
 
 }

@@ -66,7 +66,7 @@ final private Liste_repo repo;
 
 
     @Override
-    public List<Object> Afficher_detailListe_et_nombrePostulant_de_la_liste(Pageable pageable) {
+    public Page<Object> Afficher_detailListe_et_nombrePostulant_de_la_liste(Pageable pageable) {
         return repo.Afficher_detailListe_et_nombrePostulant_de_la_liste(pageable);
     }
 

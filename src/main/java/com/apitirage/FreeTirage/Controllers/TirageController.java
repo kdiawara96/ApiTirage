@@ -88,20 +88,9 @@ public class TirageController {
 
     @GetMapping("/AfficherTirage")
     @ApiOperation(value = "Cette methode va vous permettre d'afficher les TIRAGES!")
-    public List<Tirages> listerTirages(){
-      return service.afficherTirage();
+    public Page<Tirages> listerTirages(@RequestParam(name="page", defaultValue="0") int page, @RequestParam(name ="size", defaultValue = "10") int size, Pageable pageable){
+      return service.afficherTirage(pageable);
     }
-
-
-
-
-
-
-
-
-
-
-
 
 
     @GetMapping("/totaleTirage")

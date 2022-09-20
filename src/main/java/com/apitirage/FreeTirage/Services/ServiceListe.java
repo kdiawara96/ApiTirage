@@ -19,7 +19,7 @@ public interface ServiceListe {
     List<Object> listeComplet();
 
 
-    List<Object> Afficher_detailListe_et_nombrePostulant_de_la_liste(Pageable pageable);
+    Page<Object> Afficher_detailListe_et_nombrePostulant_de_la_liste(Pageable pageable);
     List<Object> liste_detail_et_nbr_Tirage_Fait_Sur_La_Liste(Pageable pageable);
 
 }

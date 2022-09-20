@@ -88,7 +88,7 @@ public ResponseEntity<Object> allListe(){
 
 
     @GetMapping("/Afficher_detailListe_et_nombrePostulant_de_la_liste")
-    public List<Object>Afficher_detailListe_et_nombrePostulant_de_la_liste(@RequestParam(name="page", defaultValue="0") int page, @RequestParam(name ="size", defaultValue = "10") int size, Pageable pageable){
+    public Page<Object>Afficher_detailListe_et_nombrePostulant_de_la_liste(@RequestParam(name="page", defaultValue="0") int page, @RequestParam(name ="size", defaultValue = "10") int size, Pageable pageable){
         return listServ.Afficher_detailListe_et_nombrePostulant_de_la_liste(pageable);
     }
 

@@ -29,8 +29,8 @@ public class TirageImpl implements ServiceTirage {
     }*/
 
     @Override
-    public List<Tirages> afficherTirage() {
-        return repo.findAll();
+    public Page<Tirages> afficherTirage(Pageable pageable) {
+        return repo.findAll(pageable);
     }
 
     @Override

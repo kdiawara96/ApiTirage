@@ -23,6 +23,11 @@ public interface Postulants_tirer_repo extends JpaRepository<Postulants_Tirer, L
     @Query(value ="INSERT INTO postulants_tirer (tirage_id,index_tirage) VALUES (?,?)" ,nativeQuery = true)
     public int insertion_tirage( Long tirage, int indexT);
 
-    @Query(value = "SELECT DISTINCT postulants.nom, postulants.prenom FROM postulants, postulants_tirer,tirages WHERE postulants.id = postulants_tirer.index_tirage AND postulants_tirer.tirage_id=?",nativeQuery = true)
+
+
+    @Query(value = "SELECT DISTINCT postulants.nom, postulants.prenom,postulants.email, postulants.numero, tirages.libelletirage, liste.libelle FROM postulants, liste, postulants_tirer,tirages WHERE postulants.id = postulants_tirer.index_tirage AND postulants_tirer.tirage_id = tirages.id AND tirages.liste_id =liste.id AND tirages.libelletirage=?",nativeQuery = true)
+    public Page<Object> afficherPostulantsPar_Libelle_Tirage(String libelle, Pageable pageable);
+
+    @Query(value = "SELECT DISTINCT postulants.nom, postulants.prenom, tirages.libelletirage, liste.libelle FROM postulants, liste, postulants_tirer,tirages WHERE postulants.id = postulants_tirer.index_tirage AND postulants_tirer.tirage_id = tirages.id AND tirages.liste_id =liste.id AND postulants_tirer.tirage_id=?",nativeQuery = true)
     public Page<Object> afficherPostulantsParTirage(Long id, Pageable pageable);
 }

@@ -40,7 +40,7 @@ public interface Liste_repo extends JpaRepository<Liste,Long> {
 
 
     @Query(value = "SELECT  DISTINCT liste.id, liste.libelle, liste.datelist, COUNT(DISTINCT postulants.id) FROM liste, postulants,postulants_liste WHERE postulants_liste.idpostulants=postulants.id AND postulants_liste.idliste =liste.id GROUP BY liste.id", nativeQuery = true)
-    List<Object>Afficher_detailListe_et_nombrePostulant_de_la_liste(Pageable pageable);
+    Page<Object>Afficher_detailListe_et_nombrePostulant_de_la_liste(Pageable pageable);
 
 
     @Query(value = "SELECT liste.id, liste.libelle, liste.datelist , COUNT(tirages.liste_id) FROM liste, tirages WHERE tirages.liste_id = liste.id GROUP BY tirages.liste_id", nativeQuery = true)

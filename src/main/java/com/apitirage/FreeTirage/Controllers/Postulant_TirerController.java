@@ -28,4 +28,10 @@ public class Postulant_TirerController {
     public Page<Object> postulantsTirer(@PathVariable Long id, Pageable pageable){
         return service.afficherPostulantsParTirge(id,pageable);
     }
+
+
+    @GetMapping("/postulantsTirerParLibelle/{libelle}")
+    public Page<Object> postulantsTirerParLibelle(@PathVariable String libelle,@RequestParam(name="page", defaultValue="0") int page, @RequestParam(name ="size", defaultValue = "10") int size, Pageable pageable){
+        return service.afficherPostulantsPar_Libelle_Tirage(libelle, pageable);
+    }
 }
